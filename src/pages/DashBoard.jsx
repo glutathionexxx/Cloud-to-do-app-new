@@ -16,6 +16,8 @@ function Dashboard() {
   const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState("Medium");
   const [editingId, setEditingId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [priorityFilter, setPriorityFilter] = useState("All");
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -83,8 +85,27 @@ function Dashboard() {
     setEditingId(task.id);
   };
 
+  // Apply filters
+  const filteredTasks = tasks
+      .filter((task) =>
+          task.text.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      .filter((task) =>
+          priorityFilter === "All" ? true : task.priority === priorityFilter
+      );
+
   return (
-      <div style={{ padding: "30px", backgroundColor: "rgba(255, 255, 255, 0.66)", borderRadius: "8px", width: "300px", justifyContent: "center", alignItems: "center", marginLeft: "40%", marginTop: "80px", maxHeight: "400px" }}>
+      <div style={{
+        padding: "30px",
+        backgroundColor: "rgba(255, 255, 255, 0.66)",
+        borderRadius: "8px",
+        width: "300px",
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: "40%",
+        marginTop: "80px",
+        maxHeight: "400px"
+      }}>
         <h1>My Tasks</h1>
 
         <form onSubmit={addOrUpdateTask} style={{ marginBottom: "20px" }}>
@@ -96,8 +117,7 @@ function Dashboard() {
               required
               style={{ width: "200px", height: "25px" }}
           />
-          <br />
-          <br />
+          <br /><br />
           <input
               type="date"
               value={dueDate}
@@ -105,8 +125,7 @@ function Dashboard() {
               style={{ width: "200px", height: "35px", fontFamily: "'Cute', sans-serif", fontSize: "20px" }}
               required
           />
-          <br />
-          <br />
+          <br /><br />
           <select
               style={{ width: "200px", height: "35px", fontFamily: "'Cute', sans-serif", fontSize: "20px" }}
               value={priority}
@@ -116,14 +135,32 @@ function Dashboard() {
             <option>Medium</option>
             <option>Low</option>
           </select>
-          <br />
-          <br />
+          <br /><br />
           <button type="submit">{editingId ? "Update" : "Add Task"}</button>
         </form>
-        <br />
 
+        {/* 🔍 Search and Filter UI */}
+        <div className="search-filter-container">
+          <input
+              type="text"
+              placeholder="Search tasks..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <select
+              value={priorityFilter}
+              onChange={(e) => setPriorityFilter(e.target.value)}
+          >
+            <option value="All">All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+
+        {/* 📝 Filtered Task List */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-          {tasks.map((task) => (
+          {filteredTasks.map((task) => (
               <div
                   key={task.id}
                   style={{

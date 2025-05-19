@@ -1,56 +1,74 @@
 .dashboard {
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
 
-  }
-  
-  form {
-    margin-bottom: 20px;
-   
-  }
-  
-  input[type="text"] {
-    padding: 10px;
-    width: 390px;
-    margin-right: 10px;
-    font-family: 'Cute', sans-serif;
-    font-size: 20px;
+form {
+  margin-bottom: 20px;
+}
 
-  }
-  
-  button {
-    padding: 10px;
-    font-family: 'Cute', sans-serif;
-    font-size: 23px;
-    border-radius: 10px;
+input[type="text"] {
+  padding: 10px;
+  width: 390px;
+  margin-right: 10px;
+  font-family: 'Cute', sans-serif;
+  font-size: 20px;
+}
 
+button {
+  padding: 10px;
+  font-family: 'Cute', sans-serif;
+  font-size: 23px;
+  border-radius: 10px;
+}
 
-  }
-  
-  .task-item {
-    display: flex;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 6px;
-    justify-content: space-between;
-    
-  }
-  
-  .task-item span {
-    flex: 1;
-    margin-left: 10px;
-  }
-  
-  .task-item.completed span {
-    text-decoration: line-through;
-    color: rgb(64, 147, 34);
-  }
-  
-  .dashboard-text {
-    font-family: 'Cute', sans-serif;
+/* 🆕 Search and Filter Container */
+.search-filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
 
-  }
+.search-filter-container input,
+.search-filter-container select {
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-family: 'Cute', sans-serif;
+  transition: 0.3s;
+}
 
+.search-filter-container input:focus,
+.search-filter-container select:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 5px #ff69b4;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  justify-content: space-between;
+}
+
+.task-item span {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: rgb(64, 147, 34);
+}
+
+.dashboard-text {
+  font-family: 'Cute', sans-serif;
+}
