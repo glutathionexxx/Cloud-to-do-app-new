@@ -1,0 +1,24 @@
+body {
+    font-family: 'Cute', sans-serif;
+    
+margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 30px;
+    
+  }
+
+  a{
+    color: rgb(255, 127, 210);
+    font-size: larger;
+  } 
+
+  html {
+    background-image: -webkit-linear-gradient(hsla(240,75%,75%,.6), hsla(300,75%,75%,.2));
+    font-size: 100%;
+    min-height: 100%;
+    background-attachment: fixed;
+}
+
+
+  
